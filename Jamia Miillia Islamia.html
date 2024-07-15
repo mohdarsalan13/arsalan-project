@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>JMI</title>
+
+    <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+:root {
+    --primary-color: #8490ff;
+    --secondary-color: #212121;
+    --bg: #fff;
+    --text-color: #333;
+    --bg-gray: #f2f2f2;
+    --header-green-color: #36ed22;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.brand-logo-name {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.50rem;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #8490ff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #212121;
+}
+
+.header {
+    padding: 1.6rem 4.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    box-shadow: 0px 0px 20px 0px rgba(132, 144, 255, 0.2);
+    width: 100%;
+    height: 10vh;
+}
+
+.header img {
+    height: 50px;
+    padding-top: 7px;
+}
+
+.navbar-lists {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-lists li {
+    margin-right: 20px;
+}
+
+.navbar-lists li:last-child {
+    margin-right: 0;
+}
+
+.navbar-link {
+    color: #fff;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.icon {
+    display: none;
+}
+
+.navbar-lists li:nth-child(1) i {
+    color: rgb(221, 228, 215);
+}
+
+.navbar-lists li:nth-child(2) i {
+    color: rgb(240, 237, 64);
+}
+
+.navbar-lists li:nth-child(3) i {
+    color: rgb(11, 12, 11);
+}
+
+.navbar-lists li:nth-child(4) i {
+    color: orange;
+}
+
+.navbar-lists li:nth-child(5) i {
+    color: rgb(33, 105, 239);
+}
+
+@media screen and (max-width: 768px) {
+    .icon {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        flex-direction: row-reverse;
+    }
+
+    .navbar-lists {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: gray;
+        width: 100%;
+        padding-top: 10px;
+        z-index: 998;
+    }
+
+    .navbar-lists.responsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-lists.responsive li {
+        margin: 10px 0;
+    }
+
+    .navbar-link {
+        padding: 10px 20px;
+    }
+
+    .navbar-link i {
+        display: none;
+    }
+}
+
+.school-img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-title {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #1bf346;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    animation: img-blink 2s infinite alternate;
+  
+}
+
+@keyframes img-blink {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+#vision {
+    padding: 4rem 0;
+    background-color: rgb(28, 225, 97) ;
+    
+}
+
+#vision h2 {
+    text-align: center;
+    color: var(--bg);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+#vision p {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 1.125rem;
+}
+
+.main-notice-section {
+    background-color: var(--bg);
+    padding: 4rem 0;
+    margin-left: 3rem;
+    overflow: auto;
+}
+
+.notice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.notice-bord,
+.event-card {
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+.notice-bord {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notice-bord h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    margin-left: 5rem;
+}
+
+.notice-bord li {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    list-style: none;
+    cursor: pointer;
+}
+
+.notice-bord li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.notice-bord li p {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.event-card {
+    background-color: #fff;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card .event-heading {
+    color: var(--header-green-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event {
+    width: 50%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease forwards;
+    transition:transform 0.3s ease, 
+                  box-shadow 0.3s ease, 
+                  background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.event:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: gray;
+    color: #fff;
+}
+
+.event h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.event p {
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .notice-container {
+        flex-direction: column;
+    }
+
+    .notice-bord,
+    .event-card {
+        width: calc(100% - 20px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .event-card {
+        margin-top: 2rem;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--secondary-color);
+    color: #fff;
+    height: 10vh;
+}
+
+
+
+    
+
+
+.aboutus-heading {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.subheading {
+    color: #000;
+}
+
+
+#about-us-section {
+    background: rgb(28, 225, 97);
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    padding-bottom: 20px;
+    border: 3px solid rgb(28, 225, 97);
+    border-radius: 5px;
+}
+
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.subheading {
+    color: #000;
+}
+
+.about-us-container p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: black;
+    text-align: left;
+}
+
+.about-us-container p:first-of-type {
+    margin-top: 0;
+}
+
+.about-us-container p:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutus-heading {
+        font-size: 2rem;
+    }
+
+    .about-us-container p {
+        font-size: 1rem;
+    }
+}
+
+
+
+ 
+
+.new-text {
+    color: red;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+
+/* JMI images album */ 
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* JMI gallery close*/
+
+/* Foundation detail css code*/
+
+
+</style>
+
+<body>
+    <header class="header">
+        <a href="/">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaO9riO-OhexECketQgO7p-Mren1pq6YhVSg&s.png" 
+               alt="Brand logo"> 
+                  <span class="brand-logo-name">
+                  Aligarh Muslim University
+                  </span>
+          </a>
+        <nav class="navbar">
+            <ul class="navbar-lists" id="myTopnav">
+                <li>
+                      <i class="fas fa-home"></i>
+                          <a class="navbar-link home-link" href="file:///C:/Users/admin/university%20hub.html">
+                              Home</a>
+                  </li>
+                <li>
+                      <i class="fas fa-user"></i>
+                          <a class="navbar-link about-link" 
+                           href="#about-us-section">
+                              About Us
+                          </a>
+                </li>
+                <li>
+                      <i class="fas fa-envelope"></i>
+                          <a class="navbar-link contact-link" 
+                           href="#contact-form">
+                          Contact Us
+                          </a>
+                  </li>
+                <li>
+                      <i class="fas fa-bullhorn"></i>
+                          <a class="navbar-link service-link" 
+                           href="#notice-bord-sction">
+                          Notice Board
+                          </a>
+                  </li>
+                <li><i class="fas fa-map-marked-alt"></i>
+                      <a class="navbar-link contact-link"
+                       href="#campus-on-map">
+                      Our Campus
+                      </a>
+                  </li>
+            </ul>
+            <a href="javascript:void(0);" 
+               class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="school-img-container">
+            <div class="img-container">
+                <img src=
+"https://static.toiimg.com/thumb/msid-96953975,width-1280,height-720,imgsize-59484,resizemode-72,overlay-toi_sw,pt-32,y_pad-40/photo.jpg"
+                     alt="school img" class="school-img">
+                <h1 class="img-title">
+                  Welcome to Jamia Millia Islamia
+                  </h1>
+            </div>
+        </div>
+
+        <section id="vision">
+            <h2 class="vision-heading">Our Vision</h2>
+            <p>
+              To become a world class institution, to disseminate and advance knowledge by providing instructional,research and extension excellence while promoting the philosophy of nationalism, pluralism and use of education to serve the nation in dealing with new and emerging challenges. The following objectives have been set to achieve the mission and accomplish the vision.
+            </p>
+        </section>
+
+
+        <section id="foundation">
+            <center>
+     <h2 class="foundation heading"> foundation details</h2></center>
+
+     Jamia Millia Islamia (Urdu: جامعہ ملّیہ اسلامیہ; JMI) is a premier central university located in New Delhi, India. Originally established at Aligarh, United Provinces (present-day Uttar Pradesh, India) during the British Empire in 1920, it moved to its current location in Okhla in 1935. It was given the deemed status by University Grants Commission in 1962. Jamia Millia Islamia became a central university in the year 1988 by an act of the Indian Parliament which was passed on December 26, 1988.<br> <br>
+
+The university was founded by Mahmud Hasan Deobandi, Mohammad Ali Jauhar, Hakim Ajmal Khan, Mukhtar Ahmed Ansari, Abdul Majeed Khwaja, Allama Iqbal, Dr Zakir Hussain, Mahatma Gandhi and Maulana Abul Kalam Azad. Its foundation stone was laid by Mahmud Hasan Deobandi, the leader of Silk Letter Movement and the first student of Darul Uloom Deoband. Muhammad Ali Jauhar served as its first vice-chancellor from 1920 to 1923, and Hakim Ajmal Khan served as the first chancellor from 1920 to 1927. On 26 May 2017, Najma Heptulla became 11th Chancellor of the university, and Najma Akhtar became the first woman to hold the post of Vice Chancellor in April 2019 and served their till 12 November 2023. On 13th March 2023, Mufaddal Saifuddin was elected the 12th Chancellor of the university, replacing Najma Heptulla.<br> <br>
+
+In 2020, Jamia Millia Islamia was ranked 1st among all central universities in the country in rankings released by Ministry of Education of India. In December 2021, the university received an 'A++' ranking by National Assessment and Accreditation Council.
+
+        </section>
+
+        <div class="main-notice-section" 
+             id="notice-bord-sction">
+            <div class="notice-container">
+                <div class="notice-bord">
+                    <h2 class="notice-bord-heading">
+                      Courses JMI offered
+                      </h2>
+                    <div>
+                        <ul>
+                            <li>Animation and Design</li>
+                              <li> Arts, Humanities, and Social Sciences</li>	
+                             <li> Commerce	</li>
+                             <li> Computer Applications and IT</li>	
+                             <li> Education	</li>
+                            <li>Engineering and Architecture	</li>
+                            <li>  Hospitality and Tourism</li>	
+                             <li> Law	</li>
+                             <li> Management and Business Administration	</li>
+                             <li> Media, Mass Communication, and Journalism</li>	
+                             <li> Medicine and Allied Sciences</li>	
+                             <li> Sciences	</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- course Section -->
+                <div class="event-card">
+                    <h2 class="event-heading">vice chancellor</h2>
+                    <div class="event-details">
+                        <div class="event">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo_FaTulMg3ezo2niVkftMf13Ou6JfcKtHVQ&s.png">
+                            <h2> Muhammad Ali Jauhar </h2>
+                            JMI first VC <br>
+                              <strong>duraton:</strong> 
+                              1920-23
+                              </p>
+                        </div>
+                        <div class="event">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd3PCKu4ZbxY1A4_W02oNlhuzwdNLUSctx6Q&s.png">
+                            <h2>Prof Mohammad Shakeel</h2>
+                            current VC
+                            <p>
+                         <strong>duration:</strong> 
+                                  2024-NOW
+                              </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about-us-section">
+            <div class="about-us-container">
+                <h2 class="aboutus-heading">About JMI</h2>
+                <p>
+                    <strong class="subheading"> 
+                          
+                      </strong>
+                      Jamia Millia Islamia, an institution originally established at Aligarh in United Provinces, India in 1920 became a Central University by an act of the Indian Parliament in 1988. In Urdu language, Jamia means ‘University’, and Millia means ‘National’.
+
+                      The story of its growth from a small institution in the pre-independence India to a central university located in New Delhi—offering integrated education from nursery to research in specialized areas—is a saga of dedication, conviction and vision of a people who worked against all odds and saw it growing step by step. They “built up the Jamia Millia stone by stone and sacrifice by sacrifice,” said Sarojini Naidu, the nightingale of India.
+                </p>
+            </div>
+        </section>
+        <center>
+<h1>Some photos of Jamia Millia Islamia</h1>
+</center>
+
+        <div class="responsive">
+            <div class="gallery">
+              
+                <img src="https://api.educationpost.in/s3-images/1712216527918-Jamia%20Millia%20Islamia%20University.png" alt="main gate">
+              </a>
+              <div class="desc">Centenary Gate JMI</div>
+            </div>
+          </div>
+          
+          <div class="responsive">
+            <div class="gallery">
+             
+                <img src="https://www.gwsportsapp.in/media/ground-images/gallery/MC41MjUzMzgwMCAxNDQ1Njc5NDQz.jpeg" alt="ground">
+              </a>
+              <div class="desc">Sports Ground JMI</div>
+            </div>
+          </div>
+          
+          <div class="responsive">
+            <div class="gallery">
+             
+                <img src="https://eduadvice.in/media/uploads/blog/jmi_1.jpg" alt="office">
+              </a>
+              <div class="desc">office of exam controller JMI</div>
+            </div>
+          </div>
+          
+        
+              
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Hdj4haKcJx_niCb9Xt_MK4KM1sOEo6YCUA&s.png" alt="library" >
+              
+              <div class="desc">Zakir hussain Library</div>
+            </div>
+          </div>
+          
+          <div class="clearfix"></div>
+
+<hr color="blue"> <br>
+
+       <center>
+    <a href="https://jmi.ac.in/"> &copy;FOR MORE DETAILS CLICK HERE>>> </a>
+</center>
+ <br> <hr color="blue"> <br>
+
+    <footer>
+        <p>&copy; 2024 University Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
